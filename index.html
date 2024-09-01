@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turn-Based Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div id="game">
+        <div id="header">
+            <h1>Chess-Like Game</h1>
+            <button id="instructionsButton">
+                Instructions
+                <div id="instructionsTooltip">
+                    <p><strong>Instructions:</strong></p>
+                    <p>1. Select a piece by clicking on it.</p>
+                    <p>2. Click on a valid destination to move the piece.</p>
+                    <p>3. The game ends when one player wins or there is a draw.</p>
+                </div>
+            </button>
+            
+        </div>
+        <div id="board"></div>
+        <div id="controls">
+            <button id="resetButton">Reset Game</button>
+        </div>
+        <div id="status"></div>
+    </div>
+    <div id="winner" style="text-align: center; margin-top: 20px;">
+    </div>
+    <div>
+        <h3>Move History</h3>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Player A</th>
+                    <th>Player B</th>
+                </tr>
+            </thead>
+            <tbody id="moveHistoryTable">
+            </tbody>
+        </table>
+    </div>
+    
+    
+    <script src="script.js"></script>
+
+</body>
+</html>

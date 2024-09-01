@@ -1,0 +1,274 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Verdana', sans-serif;
+}
+
+body {
+    background-color: #1a1a1d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #fff;
+    overflow: hidden; /* Prevents scrollbars for a cleaner look */
+}
+
+#game {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #262626;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+#board {
+    display: grid;
+    grid-template-columns: repeat(5, 70px);
+    grid-template-rows: repeat(5, 70px);
+    gap: 6px;
+    margin-bottom: 25px;
+    animation: boardAnimation 0.8s ease-out;
+}
+
+@keyframes boardAnimation {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.cell {
+    width: 70px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    font-weight: bold;
+    border: 3px solid #fff;
+    background-color: #e74c3c;
+    color: #fff;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.cell:hover {
+    background-color: #f39c12;
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.cell.selected {
+    background-color: #3498db;
+    border: 3px solid #fff;
+    transform: scale(1.1);
+    animation: pulse 0.8s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1.1);
+        background-color: #3498db;
+    }
+    50% {
+        transform: scale(1.15);
+        background-color: #2980b9;
+    }
+    100% {
+        transform: scale(1.1);
+        background-color: #3498db;
+    }
+}
+
+#controls {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#status {
+    font-size: 22px;
+    margin-bottom: 15px;
+    padding: 12px;
+    border-radius: 8px;
+    background-color: #2c3e50;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    color: #ecf0f1;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+#status:hover {
+    background-color: #34495e;
+    color: #fff;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 25px;
+    background-color: #34495e;
+}
+
+table, th, td {
+    border: 1px solid #ecf0f1;
+}
+
+th, td {
+    padding: 12px;
+    text-align: center;
+    color: #ecf0f1;
+    transition: background-color 0.3s ease;
+}
+
+thead {
+    background-color: #2980b9;
+    color: #fff;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #3e517a;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #34495e;
+}
+
+tbody tr:hover {
+    background-color: #2c3e50;
+    transition: background-color 0.3s ease;
+}
+
+@media screen and (max-width: 1024px) {
+    #board {
+        grid-template-columns: repeat(5, 60px);
+        grid-template-rows: repeat(5, 60px);
+    }
+
+    .cell {
+        width: 60px;
+        height: 60px;
+        font-size: 24px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #board {
+        grid-template-columns: repeat(5, 50px);
+        grid-template-rows: repeat(5, 50px);
+    }
+
+    .cell {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #game {
+        padding: 20px;
+    }
+
+    #board {
+        grid-template-columns: repeat(5, 40px);
+        grid-template-rows: repeat(5, 40px);
+    }
+
+    .cell {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+
+    #status {
+        font-size: 18px;
+        padding: 8px;
+    }
+}
+#controls {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#resetButton {
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#resetButton:hover {
+    background-color: #c0392b;
+    transform: scale(1.05);
+}
+/* Styling for header and instructions button */
+#header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+#header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+#instructionsButton {
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#instructionsButton:hover {
+    background-color: #2980b9;
+    transform: scale(1.05);
+}
+
+/* Tooltip styling */
+#instructionsTooltip {
+    display: none;
+    position: absolute;
+    top: 30px;
+    right: 0;
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    z-index: 100;
+    max-width: 200px;
+}
+
+#instructionsButton:hover #instructionsTooltip {
+    display: block;
+}
